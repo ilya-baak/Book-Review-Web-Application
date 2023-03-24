@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+</head>
+
+<body>
+<h1>{{ book.title }}</h1>
+<p>Author: {{ book.author }}</p>
+<p>Year: {{ book.year }}</p>
+<p>ISBN: {{ book.isbn }}</p>
+<h3>Google Books Ratings</h3>
+<p>Score: {{ API_data[0] }}</p>
+<p>Review Count: {{ API_data[1] }}</p>
+<h3>Add your own review</h3>
+
+<form method="POST" action="{{ url_for('book', userID=userID, ISBN=book.isbn) }}">
+    <label for="rating">Rate the book:</label>
+    <select name="rating" id="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+<input type="submit" value="Submit">
+</form>
+<br>
+<form method="POST" action="{{ url_for('book', ISBN=book.isbn) }}">
+    <label for="review">Leave a review of the book:</label>
+    <br>
+    <textarea id="review" name="review" rows="4" cols="50"></textarea><br><br>
+    <input type="submit" value="Submit">
+</form>
+<br><br>
+<h3>Reviews from other users</h3>
+{% for review in reviews %}
+    <p>Score: {{ review.rating }} <br><br>Review: {{ review.review }} <br><br>Date: {{ review.created_at }}</p>
+    <br><br>
+{% endfor %}
+
+</body>
+</html>
