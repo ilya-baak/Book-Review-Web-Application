@@ -1,8 +1,8 @@
-Flask Book Review Web Application
+# Flask Book Review Web Application
 
 This is a Flask-based web application that allows users to search and review books. The application uses SQLAlchemy and a PostgreSQL database to store book information and user reviews.
 
-This web application allows users to:
+# This web application allows users to:
 Register for an account
 Log in to their account
 Log out of their account
